@@ -1,0 +1,56 @@
+import turtle
+import random
+import collections
+
+Point = collections.namedtuple('Point',['x','y'])
+
+
+pen_one = turtle.Turtle()
+
+xy=turtle.Screen()
+xy.screensize(1000,1000)
+xy.colormode(255)
+
+def drawTriangle(colorr, colorg,colorb, startx, starty):
+    pen = turtle.Turtle()
+    pen.color((colorr, colorg, colorb))
+    pen.penup()
+    pen.setposition(startx, starty)
+    pen.pendown()
+    pen.hideturtle()
+    pen.speed(0)
+    pen.begin_fill()
+    angle = random.randint(0, 360)
+    x1 = random.randint(startx - 50, startx + 50)
+    y1 = random.randint(starty - 50, starty + 50)
+    if x1 >500:
+        x1=500
+    if x1<-500:
+        x1=-500
+    if y1 >500:
+        y1=500
+    if y1 <-500:
+        y1=-500
+    pen.setposition(x1, y1)
+    x2 = random.randint(x1 - 50, x1 + 50)
+    y2 = random.randint(y1 - 50, y1 + 50)
+    if x2 >500:
+        x2=500
+    if x2<-500:
+        x2=-500
+    if y2 >500:
+        y2=500
+    if y2 <-500:
+        y2=-500
+
+    p= Point(x2, y2)
+    pen.setposition(x2, y2)
+    pen.end_fill()
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    drawTriangle(r, g, b,x2,y2 )
+
+drawTriangle(0,0,0,0,0)
+
+turtle.done()
